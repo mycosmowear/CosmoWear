@@ -216,7 +216,8 @@
 
     function toggleMode() {
       const root = document.documentElement;
-      if (root.style.getPropertyValue('--accent') === '#00f0ff') {
+      const currentAccent = getComputedStyle(root).getPropertyValue('--accent').trim();
+      if (currentAccent === '#00f0ff') {
         root.style.setProperty('--accent', '#8aff00');
         root.style.setProperty('--hover', '#ff00aa');
         root.style.setProperty('--bg', '#0a0a0a');
@@ -225,5 +226,9 @@
         root.style.setProperty('--accent', '#00f0ff');
         root.style.setProperty('--hover', '#ff00c8');
         root.style.setProperty('--bg', '#000');
-        root.style.setProperty
-
+        root.style.setProperty('--text', '#fff');
+      }
+    }
+  </script>
+</body>
+</html>
