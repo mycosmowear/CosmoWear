@@ -128,30 +128,22 @@
       opacity: 0.6;
     }
 
-    /* ✨ Animated Starfield */
+    /* ✨ Star Background Image */
     .stars {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
+      background: url('stars.png') repeat;
+      background-size: cover;
       z-index: 0;
-      overflow: hidden;
       pointer-events: none;
-    }
-
-    .stars::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, #ffffff 1px, transparent 1px);
-      background-size: 3px 3px;
-      animation: moveStars 100s linear infinite;
       opacity: 0.2;
+      animation: scrollStars 60s linear infinite;
     }
 
-    @keyframes moveStars {
-      from { transform: translateY(0); }
-      to { transform: translateY(-500px); }
+    @keyframes scrollStars {
+      from { background-position: 0 0; }
+      to { background-position: 0 -1000px; }
     }
 
     /* 📱 Mobile Responsiveness */
@@ -165,10 +157,10 @@
 <body>
   <!-- 🌠 Splash Screen with Logo -->
   <div id="splash">
-    <img src="file:///D:/Kruthin/Cosmo/Cosmo%20logo-1.png" alt="Cosmowear Logo" />
+    <img src="your-logo.png" alt="Cosmowear Logo" />
   </div>
 
-  <!-- ✨ Floating Stars -->
+  <!-- ✨ Star Background Image -->
   <div class="stars"></div>
 
   <!-- 🌌 Main Content -->
