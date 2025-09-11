@@ -5,78 +5,184 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cosmowear | Streetwear from the Stars</title>
 
-  <!-- ✅ Custom Favicon -->
-  <link rel="icon" type="image/png" href="file:///C:/Users/Administrator/Downloads/favicon_io/favicon-16x16.png" />
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-  <!-- 🌌 Cosmic Branding Styles -->
+  <!-- 🌠 Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- 🌌 Styles -->
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, #0f0f2d, #000);
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      background: #000;
       color: #fff;
+      overflow: hidden;
+    }
+
+    /* 🌠 Splash Screen */
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at center, #0f0f2d, #000);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      z-index: 9999;
+      animation: fadeOut 3s ease forwards;
+    }
+
+    #splash img {
+      width: 200px;
+      animation: pulse 2s infinite;
+      filter: drop-shadow(0 0 15px #00f0ff);
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
+    /* 🌌 Main Content */
+    #main {
+      opacity: 0;
+      animation: fadeIn 3s ease 3s forwards;
+      position: relative;
+      z-index: 1;
       text-align: center;
+      padding: 4em 1em;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     h1 {
-      font-size: 3rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.5em;
+      font-size: 3.5rem;
       background: linear-gradient(to right, #00f0ff, #ff00c8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(255,255,255,0.2);
+      margin-bottom: 0.5em;
+      transition: transform 0.3s ease;
+    }
+
+    h1:hover {
+      transform: scale(1.05);
     }
 
     p {
       font-size: 1.2rem;
       max-width: 600px;
-      margin-bottom: 2em;
-      opacity: 0.8;
+      margin: 0 auto 2em;
+      opacity: 0.85;
     }
 
-    .cta, .social {
-      padding: 0.8em 2em;
-      margin: 0.5em;
-      background: #00f0ff;
-      color: #000;
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.8em 1.5em;
+      background: rgba(0, 240, 255, 0.2);
+      border: 2px solid #00f0ff;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-      display: inline-block;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 10px #00f0ff;
     }
 
-    .cta:hover, .social:hover {
-      background: #ff00c8;
-      color: #fff;
+    .btn i {
+      font-size: 1.2rem;
+    }
+
+    .btn:hover {
+      background: rgba(255, 0, 200, 0.3);
+      border-color: #ff00c8;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff00c8;
     }
 
     footer {
-      position: absolute;
-      bottom: 1em;
+      margin-top: 3em;
       font-size: 0.9rem;
-      opacity: 0.5;
+      opacity: 0.6;
+    }
+
+    /* ✨ Animated Starfield */
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .stars::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, #ffffff 1px, transparent 1px);
+      background-size: 3px 3px;
+      animation: moveStars 100s linear infinite;
+      opacity: 0.2;
+    }
+
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-500px); }
+    }
+
+    /* 📱 Mobile Responsiveness */
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5rem; }
+      p { font-size: 1rem; }
+      .btn { padding: 0.6em 1em; font-size: 0.9rem; }
     }
   </style>
 </head>
 <body>
-  <h1>Cosmowear</h1>
-  <p>Where cosmic vibes meet everyday hustle. Explore our zero-hype, zero-cost streetwear drops—powered by you.</p>
-
-  <!-- 🔗 Store Button -->
-  <a class="cta" href="https://mycosmowear.blinkstore.ai" target="_blank">Enter Store</a>
-
-  <!-- 📱 Social Buttons -->
-  <div>
-    <a class="social" href="https://instagram.com/cosmowear_in" target="_blank">Instagram</a>
-    <a class="social" href="https://www.youtube.com/@CosmoWear" target="_blank">YouTube</a>
+  <!-- 🌠 Splash Screen with Logo -->
+  <div id="splash">
+    <img src="file:///D:/Kruthin/Cosmo/Cosmo%20logo-1.png" alt="Cosmowear Logo" />
   </div>
 
-  <footer>© 2025 Cosmowear. Designed by Kruthin.</footer>
+  <!-- ✨ Floating Stars -->
+  <div class="stars"></div>
+
+  <!-- 🌌 Main Content -->
+  <div id="main">
+    <h1>COSMOWEAR</h1>
+    <p>Where cosmic vibes meet everyday hustle. Explore our zero-hype, zero-cost streetwear drops—powered by you.</p>
+
+    <div class="button-group">
+      <a class="btn" href="https://www.instagram.com/cosmowear_in/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a class="btn" href="https://www.youtube.com/@CosmoWear" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+      <a class="btn" href="https://mycosmowear.blinkstore.ai/" target="_blank"><i class="fas fa-store"></i> Store</a>
+    </div>
+
+    <footer>© 2025 Cosmowear. Designed by KruthinPlayz.</footer>
+  </div>
 </body>
 </html>
