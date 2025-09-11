@@ -22,8 +22,7 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="6" fill="%2300f0ff"/></svg>') 16 16, auto;
-    }
+      cursor: auto;
 
     #splash {
       position: fixed;
@@ -174,9 +173,51 @@
       p { font-size: 1rem; }
       .btn { padding: 0.6em 1em; font-size: 0.9rem; }
     }
+      nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1em;
+  z-index: 10000;
+  text-align: center;
+}
+      
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
+}
+      
+nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+      
+nav a:hover {
+  color: var(--hover);
+}
+
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+      
   </style>
 </head>
 <body>
+  <nav>
+  <ul>
+    <li><a href="#main">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#coming">Coming Soon</a></li>
+  </ul>
+</nav>
   <div id="splash">
     <img src="logo.png" alt="Cosmowear Logo" />
   </div>
@@ -197,6 +238,10 @@
       <h2>About Cosmowear</h2>
       <p>Cosmowear is a creator-first streetwear concept built by KruthinPlayz. No hype. No gatekeeping. Just cosmic energy and clean design. This site is a portal—not just to fashion, but to a mindset. Stay tuned for drops that defy gravity.</p>
     </div>
+    <div id="coming" class="animate">
+  <h2>🚀 Coming Soon</h2>
+  <p>Our first cosmic drop is orbiting closer. Stay tuned for zero-hype streetwear that defies gravity.</p>
+</div>
 
     <div class="toggle-mode" onclick="toggleMode()">🔄 Switch Theme</div>
 
@@ -232,3 +277,4 @@
   </script>
 </body>
 </html>
+
