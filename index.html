@@ -167,7 +167,25 @@
       font-size: 0.9rem;
       opacity: 0.6;
     }
+      #backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent);
+  color: #000;
+  padding: 0.5em 0.7em;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.5rem;
+  box-shadow: 0 0 10px var(--accent);
+  display: none;
+  z-index: 9999;
+}
 
+#backToTop:hover {
+  background: var(--hover);
+  box-shadow: 0 0 20px var(--hover);
+}
     @media (max-width: 600px) {
       h1 { font-size: 2.5rem; }
       p { font-size: 1rem; }
@@ -207,8 +225,46 @@ nav a:hover {
 html {
   scroll-behavior: smooth;
 }
-      
+      .astronaut {
+  position: fixed;
+  bottom: 10%;
+  left: -100px;
+  width: 80px;
+  height: 80px;
+  background: url('astronaut.png') no-repeat center/contain;
+  animation: floatAcross 60s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@keyframes floatAcross {
+  from { left: -100px; transform: rotate(0deg); }
+  to { left: 110%; transform: rotate(360deg); }
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover);
+}
+
   </style>
+  <meta name="description" content="Cosmowear is a creator-first streetwear brand built by KruthinPlayz. No hype. Just cosmic energy.">
+<meta property="og:title" content="Cosmowear | Streetwear from the Stars">
+<meta property="og:description" content="Zero-hype streetwear powered by cosmic energy and clean design.">
+<meta property="og:image" content="logo.png">
+<meta property="og:url" content="https://mycosmowear.github.io/Cosmowear/">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
   <nav>
@@ -221,7 +277,8 @@ html {
   <div id="splash">
     <img src="logo.png" alt="Cosmowear Logo" />
   </div>
-
+  <div class="astronaut"></div>
+<audio id="hoverSound" src="hover.mp3" preload="auto"></audio>
   <div class="stars"></div>
 
   <div id="main">
@@ -249,6 +306,13 @@ html {
   </div>
 
   <script>
+    const hoverSound = document.getElementById('hoverSound');
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    hoverSound.currentTime = 0;
+    hoverSound.play();
+  });
+});
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -274,7 +338,13 @@ html {
         root.style.setProperty('--text', '#fff');
       }
     }
+    window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backToTop');
+  btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
   </script>
+  <a href="#main" id="backToTop">⬆️</a>
 </body>
 </html>
+
 
