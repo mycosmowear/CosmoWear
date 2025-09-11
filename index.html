@@ -89,11 +89,11 @@
     }
 
     .button-group {
-   <div class="button-group">
-  <a class="btn" href="xxx" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
-  <a class="btn" href="yyy" target="_blank"><i class="fab fa-youtube"></i> YouTube</a><br>
-  <a class="btn" href="zzz" target="_blank"><i class="fas fa-store"></i> Store</a>
-</div>
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2em;
     }
 
     .btn {
@@ -110,6 +110,7 @@
       transition: all 0.3s ease;
       backdrop-filter: blur(6px);
       box-shadow: 0 0 10px #00f0ff;
+      width: fit-content;
     }
 
     .btn i {
@@ -158,7 +159,7 @@
 <body>
   <!-- 🌠 Splash Screen with Logo -->
   <div id="splash">
-    <img src="your-logo.png" alt="Cosmowear Logo" />
+    <img src="logo.png" alt="Cosmowear Logo" />
   </div>
 
   <!-- ✨ Star Background Image -->
@@ -179,5 +180,3 @@
   </div>
 </body>
 </html>
-
-
